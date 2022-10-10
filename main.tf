@@ -10,6 +10,7 @@ terraform {
 # Configure the IBM Provider
 provider "ibm" {
   region = "us-south"
+  ibmcloud_api_key = var.ibmcloud_api_key
 }
 
 # Create a VPC
