@@ -15,21 +15,32 @@ provider "ibm" {
 
 # Create a VPC
 resource "ibm_is_vpc" "testacc_vpc" {
-  name = "test-vpc"
+  name = "testvpc-mattokc35"
 }
 
 resource "ibm_is_vpc_routing_table" "testacc_vpc" {
   name = "example-routing-table"
   vpc  =  ibm_is_vpc.testacc_vpc.id
+
+
 }
 
+resource "ibm_is_vpc_address_prefix" "testacc_vpc" {
+  cidr = "10.0.1.0/24"
+  name = "testacc-vpc-add-prefix"
+  vpc  = ibm_is_vpc.testacc_vpc.id
+  zone = "${var.ibm_region}-1"
+}
 
 resource "ibm_is_subnet" "testacc_vpc" {
-  name            = "example-subnet"
+  depends_on = [
+    ibm_is_vpc_address_prefix.testacc_vpc
+  ]
+  ipv4_cidr_block = "10.0.1.0/24"
+  name            = "testacc-vpc-subnet"
   vpc             = ibm_is_vpc.testacc_vpc.id
-  zone            = "us-south-1"
-  ipv4_cidr_block = "10.240.0.0/24"
-  routing_table   = ibm_is_vpc_routing_table.testacc_vpc.routing_table
+  zone            = "${var.ibm_region}-1"
+  
 
   //User can configure timeouts
   timeouts {
@@ -40,9 +51,9 @@ resource "ibm_is_subnet" "testacc_vpc" {
 
 
 resource "ibm_is_public_gateway" "testacc_vpc" {
-  name = "example-public-gateway"
+  name = "testacc-vpc-public-gateway"
   vpc  = ibm_is_vpc.testacc_vpc.id
-  zone = "us-south-1"
+  zone = "${var.ibm_region}-1"
 }
 
 resource "ibm_is_subnet_public_gateway_attachment" "testacc_vpc" {
