@@ -9,7 +9,7 @@ terraform {
 
 # Configure the IBM Provider
 provider "ibm" {
-  region = "us-south"
+  region = "${var.ibm_region}"
   ibmcloud_api_key = var.ibmcloud_api_key
 }
 
