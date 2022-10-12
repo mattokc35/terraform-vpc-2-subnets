@@ -8,6 +8,10 @@ variable "ibm_region" {
     default = "us-south"
 }
 
+variable "vpc_name" {
+    type = string 
+}
+
 output "ibmcloud_api_key" {
     value = var.ibmcloud_api_key
     sensitive = true
@@ -20,3 +24,4 @@ output "subnet" {
 output "vpc" {
     value = ibm_is_vpc.testacc_vpc.id
 }
+
