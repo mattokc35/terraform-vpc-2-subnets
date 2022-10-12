@@ -15,7 +15,7 @@ provider "ibm" {
 
 # Create a VPC
 resource "ibm_is_vpc" "testacc_vpc" {
-  name = "${vpc_name}"
+  name = "${var.vpc_name}"
 }
 
 resource "ibm_is_vpc_routing_table" "testacc_vpc" {
