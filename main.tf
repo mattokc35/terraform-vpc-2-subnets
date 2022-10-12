@@ -15,7 +15,7 @@ provider "ibm" {
 
 # Create a VPC
 resource "ibm_is_vpc" "testacc_vpc" {
-  name = "testvpc-mattokc35-7549"
+  name = "testvpc-mattokc35-75455"
 }
 
 resource "ibm_is_vpc_routing_table" "testacc_vpc" {
