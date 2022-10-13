@@ -5,7 +5,6 @@ variable "ibmcloud_api_key" {
 
 variable "ibm_region" {
     type = string
-    default = "us-south"
 }
 
 variable "vpc_name" {
