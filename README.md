@@ -1,1 +1,1 @@
-# ibmcloud-tf-vpc-with-subnets
+# terraform-vpc-2-subnets
