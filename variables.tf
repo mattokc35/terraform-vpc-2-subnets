@@ -12,11 +12,11 @@ variable "vpc_name" {
 }
 
 output "subnet_zone_1" {
-    value = ibm_is_subnet.subnet_zone_1
+    value = ibm_is_subnet.subnet_zone_1.id
 }
 
 output "subnet_zone_2" {
-    value = ibm_is_subnet.subnet_zone_2
+    value = ibm_is_subnet.subnet_zone_2.id
 }
 
 output "vpc" {
