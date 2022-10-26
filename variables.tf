@@ -11,8 +11,12 @@ variable "vpc_name" {
     type = string 
 }
 
-output "subnet" {
-    value = ibm_is_subnet.testacc_vpc.id
+output "subnet_zone_1" {
+    value = ibm_is_subnet.subnet_zone_1
+}
+
+output "subnet_zone_2" {
+    value = ibm_is_subnet.subnet_zone_2
 }
 
 output "vpc" {
